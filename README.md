@@ -4,5 +4,6 @@
 
 - 코딩테스트 대비 문제풀이
 
-_[프로그래머스](https://github.com/llhbum/Problem-Solving_JAVA/tree/master/src/Programmers)_
+- 바로가기
+1. [프로그래머스 ](https://github.com/llhbum/Problem-Solving_JAVA/tree/master/src/Programmers)
 
