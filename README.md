@@ -1,4 +1,4 @@
-### Problem-Solving - Python
+### Problem-Solving - Java
 
 - 자세한 풀이 : [네이버 블로그-PS카테고리](https://blog.naver.com/llhbum)
 
