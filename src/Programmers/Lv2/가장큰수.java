@@ -14,8 +14,8 @@ public class 가장큰수 {
 
         Arrays.sort(sarr, new Comparator<String>() {
             @Override
-            public int compare(String o1, String o2) {
-                return (o1 + o2).compareTo(o1+o2);
+            public int compare(String str1, String str2) {
+                return (str2 + str1).compareTo(str1 + str2);
             }
         });
 
