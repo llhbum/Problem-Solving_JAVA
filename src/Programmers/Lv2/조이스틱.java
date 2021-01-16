@@ -29,13 +29,12 @@ public class 조이스틱 {
 
         // 3. 좌우 움직임 조작
         int minMove = name.length() - 1;
-        for(int i = 0 ; i < name.length() ; i++) {
+        for(int i = 0; i < name.length(); i++) {
             if(name.charAt(i) != 'A') {
                 int next = i+1; // next: i 이후에 처음으로 나오는 A가 아닌 문자
                 while(next < name.length() && name.charAt(next) == 'A') {
                     next++;
                 }
-
                 // 오른쪽으로 먼저 이동할 경우
                 int rightMove = 2 * i + name.length() - next;
 
