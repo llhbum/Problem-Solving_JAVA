@@ -33,7 +33,7 @@ public class 땅따먹기 {
 
 
 
-      // 오답
+//       오답
 //    int solution(int[][] land) {
 //        int answer = 0;
 //
