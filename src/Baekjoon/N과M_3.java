@@ -1,37 +1,26 @@
 package Baekjoon;
 
-
 import java.util.Scanner;
 
-/*
-https://st-lab.tistory.com/114
- */
-public class N과M_1 {
-    static int arr[];
-    static boolean visit[];
+public class N과M_3 {
     static int N;
     static int M;
+    static int[] arr;
+    static boolean[] visited;
     static StringBuilder sb = new StringBuilder();
 
 
-    public static void dfs(int d){
-        if(d == M){
+    public static void dfs(int depth){
+        if(depth == M){
             for(int i : arr){
-                sb.append(i+ " ");
+                sb.append(i + " ");
             }
             sb.append("\n");
             return;
         }
-
-        for(int i = 1; i <= N; i++){
-            if(visit[i] == false){
-                System.out.println();
-                visit[i] = true;
-                arr[d] = i;
-                dfs(d + 1);
-                visit[i] = false;
-
-            }
+        for(int i=1; i<=N; i++){
+                arr[depth] = i;
+                dfs(depth+1);
         }
     }
 
@@ -39,12 +28,12 @@ public class N과M_1 {
         Scanner scan = new Scanner(System.in);
         N = scan.nextInt();
         M = scan.nextInt();
+
         arr = new int[M];
-        visit = new boolean[N+1];
+        visited = new boolean[N+1];
         dfs(0);
         System.out.println(sb);
         scan.close();
-
 
     }
 }
