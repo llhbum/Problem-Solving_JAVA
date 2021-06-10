@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 
-public class N과M_9 {
+public class N과M_11 {
     static int N;
     static int M;
     static int[] arr;
@@ -12,7 +12,7 @@ public class N과M_9 {
     static int[] inputArr;
     static LinkedHashSet<String> ans;
 
-    public static void dfs( int depth){
+    public static void dfs(int depth){
         if(depth == M){
             StringBuilder sb = new StringBuilder();
             for(int i : arr){
@@ -22,12 +22,8 @@ public class N과M_9 {
             return;
         }
         for(int i = 0; i< inputArr.length; i++){
-            if(visited[i] == false ){
-                visited[i] = true;
                 arr[depth] = inputArr[i];
                 dfs(depth+1);
-                visited[i] = false;
-            }
         }
     }
     public static void main(String[] args) {

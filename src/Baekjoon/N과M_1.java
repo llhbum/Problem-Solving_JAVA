@@ -44,7 +44,5 @@ public class N과M_1 {
         dfs(0);
         System.out.println(sb);
         scan.close();
-
-
     }
 }
