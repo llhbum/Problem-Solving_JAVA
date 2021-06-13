@@ -10,6 +10,7 @@ public class 빙산 {
     static int[][] map;
     static int[][] OriginalMap;
     static boolean[][] visitied;
+    static boolean[][] OriginalVisited;
     static boolean[][] meltVisited;
 
     static int[] dx;
@@ -31,9 +32,17 @@ public class 빙산 {
     }
 
         public static void initMap(){
+            for(int i = 1; i<N; i++){
+                for(int j = 1; j<M; j++){
+                    map[i][j] = OriginalMap[i][j];
+                }
+            }
+        }
+
+        public static void initVisited(){
             for(int i = 0; i<N; i++){
                 for(int j = 0; j<M; j++){
-                    map[i][j] = OriginalMap[i][j];
+                    visitied[i][j] = OriginalVisited[i][j];
                 }
             }
         }
@@ -44,8 +53,8 @@ public class 빙산 {
 
             meltVisited = new boolean[N][M];
 
-            for(int n = 0; n<N; n++){
-                for(int m = 0; m < M; m++){
+            for(int n = 1; n<N; n++){
+                for(int m = 1; m < M; m++){
                     if(OriginalMap[n][m] != 0){
                         meltVisited[n][m] = true;
                         for(int i = 0; i < dx.length; i++){
@@ -65,13 +74,13 @@ public class 빙산 {
                 }
             }
             meltCnt+=1;
-            System.out.println("meltCnt : " + meltCnt);
-            for(int n = 0; n<N; n++){
-                for(int m = 0; m < M; m++){
-                    System.out.print(OriginalMap[n][m]);
-                }
-                System.out.println();
-            }
+//            System.out.println("meltCnt : " + meltCnt);
+//            for(int n = 0; n<N; n++){
+//                for(int m = 0; m < M; m++){
+//                    System.out.print(OriginalMap[n][m]);
+//                }
+//                System.out.println();
+//            }
             return;
         }
 
@@ -79,10 +88,9 @@ public class 빙산 {
         public static void check_bfs(){
 //            System.out.println("check_bfs 시작");
             q = new LinkedList<q_class>();
-                for(int n = 0; n<N; n++){
-                    for(int m = 0; m<M; m++){
+                for(int n = 1; n<N; n++){
+                    for(int m = 1; m<M; m++){
                         if(map[n][m] != 0 ){
-
                             q.add(new q_class(n,m));
                             while (!q.isEmpty()){
 
@@ -99,11 +107,22 @@ public class 빙산 {
                                         q.add(new q_class(nx,ny));
                                         map[nx][ny] = 0;
 
+//                                        for(int k = 0; k<N; k++){
+//                                            for(int l = 0; l < M; l++){
+//                                                System.out.print(map[k][l]);
+//                                            }
+//                                            System.out.println();
+//                                        }
+//                                        System.out.println();
+
                                     }
                                 }
                             }
                             iceNum += 1;
-                            System.out.println("iceNum : " + iceNum);
+                            if(iceNum >= 2){
+                                return;
+                            }
+//                            System.out.println("iceNum : " + iceNum);
                         }
                     }
                 }
@@ -115,7 +134,8 @@ public class 빙산 {
             M = scan.nextInt();
             map = new int[N][M];
             OriginalMap = new int[N][M];
-            visitied = new boolean[N][M];
+//            visitied = new boolean[N][M];
+//            OriginalVisited = new boolean[N][M];
 
 
             for(int n = 0; n<N; n++){
@@ -131,33 +151,35 @@ public class 빙산 {
 
 
 
-            int mapMax = 0;
             int answer = 0;
-            //정상출력
-            for(int n = 0; n<N; n++){
-                for(int m = 0; m < M; m++){
 
-                    if(mapMax < map[n][m]){
-                        mapMax = map[n][m];
-                    }
-                }
-            }
-
-            for(int i = 0; i<mapMax; i++){
-                melt_bfs();
-                initMap();
+            while(true){
+                visitied = new boolean[N][M];
                 iceNum = 0;
                 check_bfs();
-                initMap();
-                if(iceNum >= 2){
+
+                if(iceNum == 2){
                     answer = meltCnt;
                     break;
+                }else if(iceNum == 0){
+                    answer = 0;
+                    break;
                 }
-            }
 
+                melt_bfs();
+                initMap();
+
+            }
             System.out.println(answer);
 
         }
 
+        /*
+4 4
+0 0 0 0
+0 0 0 0
+1 0 0 0
+0 0 0 0
+        */
 
 }
