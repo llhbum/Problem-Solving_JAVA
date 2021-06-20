@@ -16,6 +16,7 @@ public class 기능개발 {
             q.add((int)(Math.ceil(temp/speeds[i])));
         }
 
+
         // 완성된 작업완료시간으로 배포횟수 구하기
         int x1 = (int)(q.poll());
         int x2 = (int)(q.poll());
