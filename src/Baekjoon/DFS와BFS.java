@@ -13,11 +13,10 @@ public class DFS와BFS {
     static StringBuilder sb;
 
     public static void dfs(int startNode){
-        sb.append(startNode+" ");
+        sb.append(startNode+ " ");
         visited[startNode] = true;
-
-        for(int i = 1; i < visited.length; i++){
-            if(i != startNode && visited[i] == false && graph[startNode][i] == 1){
+        for(int i = 1; i < N+1; i++){
+            if( i != startNode && !visited[i] && graph[startNode][i] == 1){
                 dfs(i);
             }
         }
@@ -27,18 +26,16 @@ public class DFS와BFS {
         Queue<Integer> q = new LinkedList<>();
         q.add(startNode);
         visited[startNode] = true;
-
         while(!q.isEmpty()){
-            int temp = q.poll();
-            sb.append(temp + " ");
-            for(int j = 1; j< visited.length; j++){
-                if(j!=temp && visited[j] == false && graph[temp][j] == 1){
-                    q.add(j);
-                    visited[j] = true;
+            int x = q.poll();
+            sb.append(x+" ");
+            for(int i = 1 ; i < N+1; i++){
+                if(i != x && !visited[i] && graph[x][i] == 1){
+                    q.add(i);
+                    visited[i] = true;
                 }
             }
         }
-
     }
 
     public static void main(String[] args) {
