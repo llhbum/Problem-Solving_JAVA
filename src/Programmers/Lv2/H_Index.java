@@ -11,6 +11,12 @@ public class H_Index {
         // 배열중 가장 큰 값을 구하는 과정
         int[] temp = citations;
         Arrays.sort(temp);
+        Integer b[] = Arrays.stream(temp).boxed().toArray(Integer[]::new);
+
+        Arrays.sort(b, Collections.reverseOrder());
+        int c[] = Arrays.stream(b).mapToInt(Integer::intValue).toArray();
+
+
         int nMax = temp[temp.length-1];
 
         int H = 0;
@@ -31,6 +37,7 @@ public class H_Index {
                 answer = i;
             }
         }
+
         return answer;
     }
 
